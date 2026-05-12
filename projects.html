@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Projects — Muhammad Ahsan Saeed</title>
+  <meta name="description" content="All web development projects by Muhammad Ahsan Saeed — WordPress, Shopify, Squarespace, Wix, HTML/CSS, GHL and more."/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    :root{--bg:#080810;--bg2:#0d0d1a;--card:#111120;--card2:#181830;--accent:#6c63ff;--a2:#a78bfa;--a3:#c4b5fd;--green:#4ade80;--text:#eeeef5;--muted:#8080aa;--border:rgba(108,99,255,.14);--glow:rgba(108,99,255,.28)}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.7;overflow-x:hidden}
+    body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.035'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;opacity:.5}
+
+    /* NAV */
+    nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.1rem 2rem;display:flex;align-items:center;justify-content:space-between;backdrop-filter:blur(22px);background:rgba(8,8,16,.88);border-bottom:1px solid var(--border);transition:box-shadow .3s}
+    .nav-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.25rem;color:var(--text);text-decoration:none;letter-spacing:-.5px}
+    .nav-logo span{color:var(--a2)}
+    .nav-links{display:flex;gap:2rem;list-style:none;align-items:center}
+    .nav-links a{color:var(--muted);text-decoration:none;font-size:.88rem;font-weight:500;transition:color .2s;position:relative}
+    .nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:2px;background:var(--a2);transition:width .3s;border-radius:2px}
+    .nav-links a:hover,.nav-links a.active{color:var(--text)}
+    .nav-links a.active::after,.nav-links a:hover::after{width:100%}
+    .nav-cta{background:var(--accent)!important;color:#fff!important;padding:.5rem 1.3rem;border-radius:8px;font-weight:600!important}
+    .nav-cta:hover{background:var(--a2)!important;transform:translateY(-1px)}
+    .nav-cta::after{display:none!important}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+    .hamburger span{display:block;width:24px;height:2px;background:var(--text);border-radius:2px}
+
+    /* PAGE HERO */
+    .page-hero{padding:9rem 2rem 4rem;background:var(--bg2);border-bottom:1px solid var(--border);position:relative;overflow:hidden}
+    .page-hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 50% 80% at 80% 50%,rgba(108,99,255,.1) 0%,transparent 70%),radial-gradient(ellipse 30% 50% at 10% 80%,rgba(167,139,250,.06) 0%,transparent 60%)}
+    .page-hero-inner{max-width:1200px;margin:0 auto;position:relative;z-index:1}
+    .breadcrumb{display:flex;align-items:center;gap:.5rem;font-size:.82rem;color:var(--muted);margin-bottom:1.5rem}
+    .breadcrumb a{color:var(--muted);text-decoration:none;transition:color .2s}
+    .breadcrumb a:hover{color:var(--a2)}
+    .breadcrumb-sep{color:rgba(255,255,255,.2)}
+    .page-title{font-family:'Syne',sans-serif;font-size:clamp(2.4rem,5vw,3.8rem);font-weight:800;letter-spacing:-2px;line-height:1.05;margin-bottom:1rem}
+    .grad{background:linear-gradient(135deg,var(--accent),var(--a2) 60%,var(--a3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .page-desc{color:var(--muted);font-size:1.05rem;max-width:560px;line-height:1.82;margin-bottom:2.5rem}
+    .page-stats{display:flex;gap:2.5rem;flex-wrap:wrap}
+    .pstat-num{font-family:'Syne',sans-serif;font-size:1.8rem;font-weight:800;color:var(--a2);line-height:1}
+    .pstat-label{font-size:.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-top:.2rem}
+
+    /* FILTER */
+    .filter-section{padding:1.8rem 2rem;background:var(--bg);border-bottom:1px solid var(--border);position:sticky;top:64px;z-index:100;backdrop-filter:blur(20px)}
+    .filter-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:1rem;flex-wrap:wrap;justify-content:space-between}
+    .filter-tabs{display:flex;gap:.45rem;flex-wrap:wrap}
+    .tab{display:inline-flex;align-items:center;gap:.4rem;padding:.48rem 1rem;border-radius:100px;border:1px solid var(--border);background:transparent;color:var(--muted);font-family:'DM Sans',sans-serif;font-size:.83rem;font-weight:500;cursor:pointer;transition:all .2s;white-space:nowrap}
+    .tab:hover{border-color:rgba(108,99,255,.4);color:var(--text)}
+    .tab.active{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+    .tab .cnt{background:rgba(255,255,255,.2);border-radius:100px;padding:.08rem .38rem;font-size:.72rem;font-weight:700;min-width:18px;text-align:center}
+    .filter-info{font-size:.85rem;color:var(--muted);white-space:nowrap}
+    .filter-info strong{color:var(--text)}
+
+    /* GRID */
+    .projects-wrap{padding:4rem 2rem 5rem;max-width:1200px;margin:0 auto}
+    .proj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:1.5rem}
+
+    /* CARD */
+    .proj-card{background:var(--card);border:1px solid var(--border);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;opacity:0;transform:translateY(22px);transition:opacity .5s ease,transform .5s ease,border-color .3s,box-shadow .3s}
+    .proj-card.visible{opacity:1;transform:translateY(0)}
+    .proj-card.hidden{display:none!important}
+    .proj-card.visible:hover{border-color:rgba(108,99,255,.45);transform:translateY(-6px)!important;box-shadow:0 20px 60px rgba(108,99,255,.14)}
+
+    /* THUMB */
+    .proj-thumb{width:100%;height:215px;background:var(--card2);position:relative;overflow:hidden;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+    .proj-thumb img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;transition:transform .5s}
+    .proj-card.visible:hover .proj-thumb img{transform:scale(1.06)}
+    .thumb-icon{font-size:4rem;opacity:.18}
+
+    /* PLATFORM BADGES */
+    .badge{position:absolute;top:.9rem;right:.9rem;border-radius:100px;padding:.25rem .8rem;font-size:.72rem;font-weight:700;backdrop-filter:blur(8px)}
+    .b-wp  {background:rgba(33,117,196,.2);border:1px solid rgba(33,117,196,.4);color:#7dd3fc}
+    .b-sh  {background:rgba(149,191,71,.15);border:1px solid rgba(149,191,71,.35);color:#a3e635}
+    .b-sq  {background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.22);color:#e2e8f0}
+    .b-html{background:rgba(228,77,38,.15);border:1px solid rgba(228,77,38,.3);color:#fb923c}
+    .b-wix {background:rgba(250,204,21,.1);border:1px solid rgba(250,204,21,.3);color:#fde047}
+    .b-ghl {background:rgba(108,99,255,.2);border:1px solid rgba(108,99,255,.4);color:var(--a2)}
+    .b-des {background:rgba(236,72,153,.15);border:1px solid rgba(236,72,153,.3);color:#f9a8d4}
+
+    /* CARD BODY */
+    .proj-body{padding:1.5rem;flex:1;display:flex;flex-direction:column}
+    .proj-type{font-size:.71rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.4rem}
+    .proj-title{font-family:'Syne',sans-serif;font-weight:700;font-size:1.05rem;margin-bottom:.5rem}
+    .proj-desc{color:var(--muted);font-size:.85rem;line-height:1.65;margin-bottom:1.1rem;flex:1}
+    .proj-foot{display:flex;align-items:center;justify-content:space-between;margin-top:auto;gap:.6rem;flex-wrap:wrap}
+    .ptags{display:flex;gap:.35rem;flex-wrap:wrap}
+    .ptag{font-size:.7rem;color:var(--muted);background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);border-radius:6px;padding:.16rem .48rem}
+    .proj-link{display:inline-flex;align-items:center;gap:.4rem;font-size:.82rem;font-weight:600;color:var(--a2);text-decoration:none;transition:all .2s;padding:.38rem .8rem;border:1px solid var(--border);border-radius:8px;white-space:nowrap;flex-shrink:0}
+    .proj-link:hover{color:#fff;background:var(--accent);border-color:var(--accent)}
+    .proj-link.disabled{color:var(--muted);cursor:default;pointer-events:none;opacity:.5}
+
+    /* EMPTY STATE */
+    .empty-state{display:none;grid-column:1/-1;text-align:center;padding:5rem 2rem}
+    .empty-state.show{display:block}
+    .empty-icon{font-size:3rem;opacity:.18;margin-bottom:1rem}
+    .empty-text{color:var(--muted);font-size:.95rem;line-height:1.9}
+    .empty-text a{color:var(--a2);text-decoration:none}
+
+    /* CTA */
+    .cta-banner{background:linear-gradient(135deg,rgba(108,99,255,.14),rgba(167,139,250,.07));border:1px solid rgba(108,99,255,.24);border-radius:24px;padding:3.5rem;text-align:center;max-width:1200px;margin:0 auto 5rem;padding-left:2rem;padding-right:2rem}
+    .cta-banner h2{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(1.6rem,3vw,2.4rem);letter-spacing:-1px;margin-bottom:.8rem}
+    .cta-banner p{color:var(--muted);max-width:460px;margin:0 auto 2rem;font-size:1rem;line-height:1.8}
+    .cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+    .btn-p{display:inline-flex;align-items:center;gap:.5rem;background:var(--accent);color:#fff;padding:.88rem 2rem;border-radius:10px;text-decoration:none;font-weight:600;font-size:.94rem;transition:all .25s}
+    .btn-p:hover{background:var(--a2);transform:translateY(-2px);box-shadow:0 10px 30px var(--glow)}
+    .btn-o{display:inline-flex;align-items:center;gap:.5rem;background:transparent;color:var(--text);padding:.88rem 2rem;border-radius:10px;text-decoration:none;font-weight:500;font-size:.94rem;border:1px solid var(--border);transition:all .25s}
+    .btn-o:hover{border-color:var(--a2);color:var(--a2);transform:translateY(-2px)}
+
+    /* FOOTER */
+    footer{background:var(--bg);border-top:1px solid var(--border);padding:3rem 2rem;text-align:center}
+    .f-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.5rem;margin-bottom:.5rem}
+    .f-logo span{color:var(--a2)}
+    .f-links{display:flex;justify-content:center;gap:2rem;list-style:none;margin:1.3rem 0;flex-wrap:wrap}
+    .f-links a{color:var(--muted);text-decoration:none;font-size:.85rem;transition:color .2s}
+    .f-links a:hover{color:var(--a2)}
+    .f-copy{color:var(--muted);font-size:.82rem}
+
+    ::-webkit-scrollbar{width:5px}
+    ::-webkit-scrollbar-track{background:var(--bg)}
+    ::-webkit-scrollbar-thumb{background:var(--accent);border-radius:3px}
+
+    @media(max-width:960px){
+      .filter-inner{flex-direction:column;align-items:flex-start}
+      .nav-links{display:none;flex-direction:column;gap:0}
+      .nav-links.open{display:flex;position:absolute;top:100%;left:0;right:0;background:rgba(8,8,16,.98);padding:1rem;border-bottom:1px solid var(--border)}
+      .nav-links.open a{padding:.8rem 1rem;display:block}
+      .hamburger{display:flex}
+    }
+    @media(max-width:600px){
+      .page-hero{padding:8rem 1.2rem 3rem}
+      .projects-wrap{padding:3rem 1.2rem 4rem}
+      nav{padding:1rem 1.2rem}
+      .filter-section{padding:1.2rem}
+      .page-stats{gap:1.5rem}
+      .cta-banner{margin:0 1.2rem 3rem;padding:2.5rem 1.5rem}
+    }
+  </style>
+</head>
+<body>
+
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">Ahsan<span>.</span></a>
+  <button class="hamburger" id="ham" aria-label="Menu"><span></span><span></span><span></span></button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#skills">Skills</a></li>
+    <li><a href="projects.html" class="active">Projects</a></li>
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="index.html#testimonials">Reviews</a></li>
+    <li><a href="index.html#contact" class="nav-cta">Hire Me</a></li>
+  </ul>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-inner">
+    <div class="breadcrumb">
+      <a href="index.html"><i class="fas fa-home"></i> Home</a>
+      <span class="breadcrumb-sep">/</span>
+      <span style="color:var(--a2)">Projects</span>
+    </div>
+    <h1 class="page-title">All <span class="grad">Projects</span></h1>
+    <p class="page-desc">Every website and store I've built for clients across Pakistan, Australia, USA, UK, and beyond. Filter by platform below.</p>
+    <div class="page-stats">
+      <div><div class="pstat-num" id="heroTotal">17</div><div class="pstat-label">Total Projects</div></div>
+      <div><div class="pstat-num">11</div><div class="pstat-label">WordPress Sites</div></div>
+      <div><div class="pstat-num">4</div><div class="pstat-label">Shopify Stores</div></div>
+      <div><div class="pstat-num">5+</div><div class="pstat-label">Countries</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- FILTER TABS -->
+<div class="filter-section">
+  <div class="filter-inner">
+    <div class="filter-tabs">
+      <button class="tab active" data-filter="all">All <span class="cnt" id="c-all">0</span></button>
+      <button class="tab" data-filter="wordpress">WordPress <span class="cnt" id="c-wordpress">0</span></button>
+      <button class="tab" data-filter="shopify">Shopify <span class="cnt" id="c-shopify">0</span></button>
+      <button class="tab" data-filter="squarespace">Squarespace <span class="cnt" id="c-squarespace">0</span></button>
+      <button class="tab" data-filter="html">HTML/CSS <span class="cnt" id="c-html">0</span></button>
+      <button class="tab" data-filter="wix">Wix <span class="cnt" id="c-wix">0</span></button>
+      <button class="tab" data-filter="ghl">GHL <span class="cnt" id="c-ghl">0</span></button>
+      <button class="tab" data-filter="design">Graphic Design <span class="cnt" id="c-design">0</span></button>
+    </div>
+    <div class="filter-info"><strong id="showing">0</strong> projects shown</div>
+  </div>
+</div>
+
+<!-- ALL PROJECTS -->
+<div class="projects-wrap">
+  <div class="proj-grid" id="grid">
+
+    <!-- ══════════════════════════════
+         WORDPRESS — 11 projects
+    ══════════════════════════════ -->
+
+    <div class="proj-card" data-cat="wordpress">
+      <div class="proj-thumb" style="background:#0a1420">
+        <img src="https://beamlineestimation.com/wp-content/uploads/2025/07/modern-building-construction-scaled.jpg" alt="Beamline Estimation"
+          onerror="this.style.display='none'"/>
+        <span class="thumb-icon" style="display:none">🏗️</span>
+        <span class="badge b-wp">WordPress</span>
+      </div>
+      <div class="proj-body">
+        <div class="proj-type">Construction & Estimation · USA</div>
+        <div class="proj-title">Beamline Estimation</div>
+        <div class="proj-desc">Professional WordPress site for a construction cost estimation company. Clean Elementor build with service pages, project showcases, and a lead-generation contact system.</div>
+        <div class="proj-foot">
+          <div class="ptags"><span class="ptag">Elementor</span><span class="ptag">Construction</span><span class="ptag">USA</span></div>
+          <a href="https://beamlineestimation.com/" target="_blank" class="proj-link"><i class="fas fa-external-link-alt"></i> Live</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="proj-card" data-cat="wordpress">
+      <div class="proj-thumb" style="background:#0d1620">
+        <img src="https://themigration.com.au/wp-content/uploads/2026/01/Melbourne-Logo-1.png" alt="The Migration" style="object-fit:contain;padding:2rem"
+          onerror="this.style.display='none'"/>
+        <span class="thumb-icon" style="display:none">🌐</span>
+        <span class="badge b-wp">WordPress</span>
+      </div>
+      <div class="proj-body">
+        <div class="proj-type">Immigration Consultancy · Australia</div>
+        <div class="proj-title">The Migration — Australia</div>
+        <div class="proj-desc">Full WordPress site for a MARA-registered Australian immigration & education consultancy. Elementor build with SEO optimisation and lead-conversion focus for Sydney & Melbourne.</div>
+        <div class="proj-foot">
+          <div class="ptags"><span class="ptag">Elementor</span><span class="ptag">SEO</span><span class="ptag">Australia</span></div>
+          <a href="https://themigration.com.au/" target="_blank" class="proj-link"><i class="fas fa-external-link-alt"></i> Live</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="proj-card" data-cat="wordpress">
+      <div class="proj-thumb" style="background:#0a1020">
+        <img src="https://alhnjazlaser.com/wp-content/uploads/2025/05/Blue_Yellow_Vintage_and_Retro_Engineering_Industry_Logo-removebg-preview-300x300.png" alt="Alhnjaz Laser" style="object-fit:contain;padding:2.5rem"
+          onerror="this.style.display='none'"/>
+        <span class="thumb-icon" style="display:none">⚙️</span>
+        <span class="badge b-wp">WordPress</span>
+      </div>
+      <div class="proj-body">
+        <div class="proj-type">Industrial Engineering · Laser & Welding</div>
+        <div class="proj-title">Alhnjaz Laser Engineering</div>
+        <div class="proj-desc">Industry-focused WordPress site for a precision laser cutting and welding company. Showcases engineering services, materials, and full fabrication capabilities.</div>
+        <div class="proj-foot">
+          <div class="ptags"><span class="ptag">Elementor</span><span class="ptag">Industrial</span></div>
+          <a href="https://alhnjazlaser.com/" target="_blank" class="proj-link"><i class="fas fa-external-link-alt"></i> Live</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="proj-card" data-cat="wordpress">
+      <div class="proj-thumb" style="background:#050a14">
+        <img src="https://mediacom.com.pk/wp-content/uploads/elementor/thumbs/imageedit_18_7487061216-r1p2ts43bnzd0qcaikhdchjz20uw068phge8x8gaeq.png" alt="Mediacom" style="object-fit:contain;padding:2.5rem"
+          onerror="this.style.display='none'"/>
+        <span class="thumb-icon" style="display:none">📡</span>
+        <span class="badge b-wp">WordPress</span>
+      </div>
+      <div class="proj-body">
+        <div class="proj-type">Telecom & IT Group · Pakistan</div>
+        <div class="proj-title">Mediacom Group Pakistan</div>
+        <div class="proj-desc">Multi-sector corporate WordPress site for Mediacom Group — covering Telecom, IT, Construction, Real Estate, and Livestock with structured services and project sections.</div>
+        <div class="proj-foot">
+          <div class="ptags"><span class="ptag">Corporate</span><span class="ptag">Pakistan</span></div>
+          <a href="https://mediacom.com.pk/" target="_blank" class="proj-link"><i class="fas fa-external-link-alt"></i> Live</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="proj-card" data-cat="wordpress">
+      <div class="proj-thumb" style="background:#080f1a">
+        <img src="https://tritaniumglobal.com/logo.png" alt="Tritanium Global" style="object-fit:contain;padding:2rem"
+          onerror="this.style.display='none'"/>
+        <span class="thumb-icon" style="display:none">🚀</span>
+        <span class="badge b-wp">WordPress</span>
+      </div>
+      <div class="proj-body">
+        <div class="proj-type">Digital Marketing Agency · Austin, TX</div>
+        <div class="proj-title">Tritanium Global</div>
+        <div class="proj-desc">Website for a full-service digital growth agency offering IT solutions, web development, SEO, and digital marketing — serving startups to Fortune 500 companies from Austin, Texas.</div>
+        <div class="proj-foot">
+          <div class="ptags"><span class="ptag">Agency</span><span class="ptag">SEO</span><span class="ptag">USA</span></div>
+          <a href="https://tritaniumglobal.com/" target="_blank" class="proj-link"><i class="fas fa-external-link-alt"></i> Live</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="proj-card" data-cat="wordpress">
+      <div class="proj-thumb" style="background:#0a0f18">
+        <img src="https://theaceservices.com/wp-content/uploads/2024/10/cropped-ACEl-01-270x270.png" alt="The ACE Services" style="object-fit:contain;padding:2.5rem"
+          onerror="this.style.display='none'"/>
+        <span class="thumb-icon" style="display:none">🏢</span>
+        <span class="badge b-wp">WordPress</span>
+      </div>
+      <div class="proj-body">
+        <div class="proj-type">Construction & Estimation</div>
+        <div class="proj-title">The ACE Services</div>
+        <div class="proj-desc">WordPress website for a top-rated construction and estimation company. Professional design with service pages, project portfolio, and clear CTAs to drive client enquiries.</div>
+        <div class="proj-foot">
+          <div class="ptags"><span class="ptag">Elementor</span><span class="ptag">Construction</span></div>
+          <a href="https://theaceservices.com/" target="_blank" class="proj-link"><i class="fas fa-external-link-alt"></i> Live</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="proj-card" data-cat="wordpress">
+      <div class="proj-thumb" style="background:#0d1520">
+        <img src="https://tratamientoenturquia.com/wp-content/uploads/2026/01/cropped-logo-1-e1773307966629-270x270.png" alt="Tratamiento en Turquia" style="object-fit:contain;padding:2rem"
+          onerror="this.style.display='none'"/>
+        <span class="thumb-icon" style="display:none">🏥</span>
+        <span class="badge b-wp">WordPress</span>
+      </div>
+      <div class="proj-body">
+        <div class="proj-type">Medical Tourism · Spain / Turkey</div>
+        <div class="proj-title">Tratamiento en Turquía</div>
+        <div class="proj-desc">Spanish-language WordPress site for a medical tourism service connecting patients with certified clinics and specialists in Turkey — covering consultations, travel and treatment journeys.</div>
+        <div class="proj-foot">
+          <div class="ptags"><span class="ptag">Medical</span><span class="ptag">Spanish</span><span class="ptag">Tourism</span></div>
+          <a href="https://tratamientoenturquia.com/" target="_blank" class="proj-link"><i class="fas fa-external-link-alt"></i> Live</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="proj-card" data-cat="wordpress">
+      <div class="proj-thumb" style="background:#080e1a">
+        <img src="https://octaoopdigital.com/wp-content/uploads/2026/02/cropped-octaoop-logo-173-x-29-px-2-3-e1772134342622-270x270.png" alt="Octaoop Digital" style="object-fit:contain;padding:2rem"
+          onerror="this.style.display='none'"/>
+        <span class="thumb-icon" style="display:none">📈</span>
+        <span class="badge b-wp">WordPress</span>
+      </div>
+      <div class="proj-body">
+        <div class="proj-type">Digital Marketing Agency</div>
+        <div class="proj-title">Octaoop Digital</div>
+        <div class="proj-desc">Performance-driven digital marketing agency site on WordPress. Specialises in SEO, paid ads, social media marketing, and data-driven growth strategies for modern businesses.</div>
+        <div class="proj-foot">
+          <div class="ptags"><span class="ptag">Agency</span><span class="ptag">SEO</span><span class="ptag">Marketing</span></div>
+          <a href="https://octaoopdigital.com/" target="_blank" class="proj-link"><i class="fas fa-external-link-alt"></i> Live</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="proj-card" data-cat="wordpress">
+      <div class="proj-thumb" style="background:#0a1018">
+        <img src="https://stafhimmigration.co.uk/wp-content/uploads/2024/01/stafh-logo.png" alt="Staf H Immigration" style="object-fit:contain;padding:2rem"
+          onerror="this.style.display='none'"/>
+        <span class="thumb-icon" style="display:none">🇬🇧</span>
+        <span class="badge b-wp">WordPress</span>
+      </div>
+      <div class="proj-body">
+        <div class="proj-type">UK Visa & Immigration Services · UK</div>
+        <div class="proj-title">Staf H Immigration</div>
+        <div class="proj-desc">WordPress site for a UK immigration consultancy providing expert guidance on UK visas and immigration. Clean Elementor build designed to build trust and generate enquiries.</div>
+        <div class="proj-foot">
+          <div class="ptags"><span class="ptag">Immigration</span><span class="ptag">UK</span><span class="ptag">Elementor</span></div>
+          <a href="https://stafhimmigration.co.uk/" target="_blank" class="proj-link"><i class="fas fa-external-link-alt"></i> Live</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="proj-card" data-cat="wordpress">
+      <div class="proj-thumb" style="background:#0a0e14">
+        <img src="https://i0.wp.com/potomac-services.com/wp-content/uploads/2025/05/cropped-Logo-Potomac-Service-white-and-black-logo.png?fit=270%2C270&ssl=1" alt="Potomac Services" style="object-fit:contain;padding:2.5rem"
+          onerror="this.style.display='none'"/>
+        <span class="thumb-icon" style="display:none">🔨</span>
+        <span class="badge b-wp">WordPress</span>
+      </div>
+      <div class="proj-body">
+        <div class="proj-type">Local Services Platform · USA</div>
+        <div class="proj-title">Potomac Services</div>
+        <div class="proj-desc">WordPress platform connecting neighbors with trusted local service providers. Elementor build focused on community trust and easy service enquiry flows.</div>
+        <div class="proj-foot">
+          <div class="ptags"><span class="ptag">Local Services</span><span class="ptag">USA</span></div>
+          <a href="https://potomac-services.com/" target="_blank" class="proj-link"><i class="fas fa-external-link-alt"></i> Live</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="proj-card" data-cat="wordpress">
+      <div class="proj-thumb" style="background:#0e1008">
+        <img src="https://handymanmissoula.com/wp-content/uploads/2023/01/handyman-missoula-logo.png" alt="Handyman Missoula" style="object-fit:contain;padding:2rem"
+          onerror="this.style.display='none'"/>
+        <span class="thumb-icon" style="display:none">🛠️</span>
+        <span class="badge b-wp">WordPress</span>
+      </div>
+      <div class="proj-body">
+        <div class="proj-type">Home Repair & Handyman · Missoula, MT</div>
+        <div class="proj-title">Handyman Missoula</div>
+        <div class="proj-desc">WordPress site for a trusted handyman service covering Missoula County, Bitterroot, Stevensville, Hamilton, and surrounding Montana areas. Clean local-SEO-focused service site.</div>
+        <div class="proj-foot">
+          <div class="ptags"><span class="ptag">Local SEO</span><span class="ptag">Services</span><span class="ptag">USA</span></div>
+          <a href="https://handymanmissoula.com/" target="_blank" class="proj-link"><i class="fas fa-external-link-alt"></i> Live</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════
+         SHOPIFY — 4 projects
+    ══════════════════════════════ -->
+
+    <div class="proj-card" data-cat="shopify">
+      <div class="proj-thumb" style="background:#0d1808">
+        <img src="https://wildwanderers.shop/cdn/shop/files/Asset_4.png?height=628&pad_color=0d1808&v=1724408804&width=1200" alt="Wild Wanderers"
+          onerror="this.style.display='none'"/>
+        <span class="thumb-icon" style="display:none">🏕️</span>
+        <span class="badge b-sh">Shopify</span>
+      </div>
+      <div class="proj-body">
+        <div class="proj-type">eCommerce · Outdoor & Adventure</div>
+        <div class="proj-title">Wild Wanderers</div>
+        <div class="proj-desc">Full Shopify eCommerce store for an outdoor & adventure brand. Custom theme setup, product collections, and a conversion-focused shopping experience built for performance.</div>
+        <div class="proj-foot">
+          <div class="ptags"><span class="ptag">Shopify Theme</span><span class="ptag">eCommerce</span><span class="ptag">Outdoor</span></div>
+          <a href="https://wildwanderers.shop/" target="_blank" class="proj-link"><i class="fas fa-external-link-alt"></i> Live</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="proj-card" data-cat="shopify">
+      <div class="proj-thumb" style="background:linear-gradient(135deg,#0a1420,#14200a)">
+        <span class="thumb-icon">🌿</span>
+        <span class="badge b-sh">Shopify</span>
+      </div>
+      <div class="proj-body">
+        <div class="proj-type">eCommerce · Lifestyle & Apparel</div>
+        <div class="proj-title">Rild Wild</div>
+        <div class="proj-desc">Shopify store for Rild Wild — a lifestyle and apparel brand. Custom theme setup, product catalogue, collections, and a clean shopping experience tailored to the brand's identity.</div>
+        <div class="proj-foot">
+          <div class="ptags"><span class="ptag">Shopify Theme</span><span class="ptag">Lifestyle</span><span class="ptag">Apparel</span></div>
+          <a href="https://rildwild.co/" target="_blank" class="proj-link"><i class="fas fa-external-link-alt"></i> Live</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="proj-card" data-cat="shopify">
+      <div class="proj-thumb" style="background:linear-gradient(135deg,#1a0a2e,#0a1a2e)">
+        <span class="thumb-icon">👗</span>
+        <span class="badge b-sh">Shopify</span>
+      </div>
+      <div class="proj-body">
+        <div class="proj-type">eCommerce · Pakistani Fashion</div>
+        <div class="proj-title">Riwaiti Rang</div>
+        <div class="proj-desc">Shopify fashion store for a Pakistani clothing brand specialising in elegant formal & semi-formal wear — winter party dresses, wedding wear, and premium embroidered fabrics.</div>
+        <div class="proj-foot">
+          <div class="ptags"><span class="ptag">Fashion</span><span class="ptag">Pakistan</span><span class="ptag">Shopify</span></div>
+          <a href="https://riwaitirang.com/" target="_blank" class="proj-link"><i class="fas fa-external-link-alt"></i> Live</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="proj-card" data-cat="shopify">
+      <div class="proj-thumb" style="background:linear-gradient(135deg,#1a0a20,#200a18)">
+        <span class="thumb-icon">💎</span>
+        <span class="badge b-sh">Shopify</span>
+      </div>
+      <div class="proj-body">
+        <div class="proj-type">Luxury Fashion · Pakistan</div>
+        <div class="proj-title">Mariam Aziz</div>
+        <div class="proj-desc">Premium Shopify store for a luxury Pakistani fashion brand — formal and semi-formal suits, raw silk dresses, and embroidered ensembles crafted in premium fabrics for every occasion.</div>
+        <div class="proj-foot">
+          <div class="ptags"><span class="ptag">Luxury</span><span class="ptag">Fashion</span><span class="ptag">Pakistan</span></div>
+          <a href="https://mariam-aziz.com/" target="_blank" class="proj-link"><i class="fas fa-external-link-alt"></i> Live</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════
+         SQUARESPACE — 2 projects
+    ══════════════════════════════ -->
+
+    <div class="proj-card" data-cat="squarespace">
+      <div class="proj-thumb" style="background:linear-gradient(135deg,#0a1a10,#0a1820)">
+        <span class="thumb-icon">🐾</span>
+        <span class="badge b-sq">Squarespace</span>
+      </div>
+      <div class="proj-body">
+        <div class="proj-type">Pet Care Services · United Kingdom</div>
+        <div class="proj-title">Petsercise UK</div>
+        <div class="proj-desc">Squarespace website for a trusted dog daycare, training & grooming company in North East England. Clean design with service listings, booking integration, and strong local SEO.</div>
+        <div class="proj-foot">
+          <div class="ptags"><span class="ptag">Pet Care</span><span class="ptag">UK</span><span class="ptag">Booking</span></div>
+          <a href="https://www.petsercise.uk/" target="_blank" class="proj-link"><i class="fas fa-external-link-alt"></i> Live</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="proj-card" data-cat="squarespace">
+      <div class="proj-thumb" style="background:linear-gradient(135deg,#1a1a1a,#0a0a14)">
+        <span class="thumb-icon">📰</span>
+        <span class="badge b-sq">Squarespace</span>
+      </div>
+      <div class="proj-body">
+        <div class="proj-type">Advertising & Brand Strategy · USA</div>
+        <div class="proj-title">We Are The Times</div>
+        <div class="proj-desc">Squarespace website for a minority-owned advertising agency specialising in social media marketing and brand strategy. Sleek design to showcase their work and attract brand clients.</div>
+        <div class="proj-foot">
+          <div class="ptags"><span class="ptag">Agency</span><span class="ptag">Branding</span><span class="ptag">USA</span></div>
+          <a href="https://www.wearethetimes.com/" target="_blank" class="proj-link"><i class="fas fa-external-link-alt"></i> Live</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ EMPTY STATES ══ -->
+    <div class="empty-state" id="es-html">
+      <div class="empty-icon">💻</div>
+      <p class="empty-text">HTML/CSS projects coming soon!<br>
+      <a href="index.html#contact">Get in touch</a> to discuss your custom-coded project.</p>
+    </div>
+    <div class="empty-state" id="es-wix">
+      <div class="empty-icon">🌐</div>
+      <p class="empty-text">Wix projects coming soon!<br>
+      <a href="index.html#contact">Get in touch</a> to discuss your Wix project.</p>
+    </div>
+    <div class="empty-state" id="es-ghl">
+      <div class="empty-icon">🚀</div>
+      <p class="empty-text">GoHighLevel projects coming soon!<br>
+      <a href="index.html#contact">Get in touch</a> to discuss your funnel or GHL project.</p>
+    </div>
+    <div class="empty-state" id="es-design">
+      <div class="empty-icon">🎨</div>
+      <p class="empty-text">Graphic Design projects coming soon!<br>
+      <a href="index.html#contact">Get in touch</a> to discuss your design project.</p>
+    </div>
+
+  </div><!-- /proj-grid -->
+</div><!-- /projects-wrap -->
+
+<!-- CTA BANNER -->
+<div class="cta-banner">
+  <h2>Have a Project in Mind?</h2>
+  <p>Whether you need a WordPress site, a Shopify store, or a custom-coded website — let's build something great together.</p>
+  <div class="cta-btns">
+    <a href="https://wa.me/923239656269" target="_blank" class="btn-p"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
+    <a href="index.html#contact" class="btn-o"><i class="fas fa-envelope"></i> Send a Message</a>
+  </div>
+</div>
+
+<footer>
+  <div class="f-logo">Ahsan<span>.</span></div>
+  <ul class="f-links">
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#skills">Skills</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <p class="f-copy">© 2026 Muhammad Ahsan Saeed — Web Developer & Designer · Dijkot, Faisalabad 🇵🇰 → World.</p>
+</footer>
+
+<script>
+  // NAV
+  const ham = document.getElementById('ham');
+  const nl  = document.getElementById('navLinks');
+  ham.addEventListener('click', () => nl.classList.toggle('open'));
+  nl.querySelectorAll('a').forEach(a => a.addEventListener('click', () => nl.classList.remove('open')));
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').style.boxShadow = window.scrollY > 30 ? '0 4px 30px rgba(0,0,0,.5)' : 'none';
+  });
+
+  // Fix onerror: show fallback icon when img fails
+  document.querySelectorAll('.proj-thumb img').forEach(img => {
+    img.addEventListener('error', function(){
+      this.style.display = 'none';
+      const icon = this.parentElement.querySelector('.thumb-icon');
+      if(icon) icon.style.display = 'flex';
+    });
+  });
+
+  // BUILD COUNTS
+  const cards = Array.from(document.querySelectorAll('.proj-card'));
+  const counts = {};
+  cards.forEach(c => { const cat = c.dataset.cat; counts[cat] = (counts[cat]||0)+1; });
+  const total = cards.length;
+  document.getElementById('c-all').textContent  = total;
+  document.getElementById('showing').textContent = total;
+  document.getElementById('heroTotal').textContent = total;
+  ['wordpress','shopify','squarespace','html','wix','ghl','design'].forEach(cat => {
+    const el = document.getElementById('c-'+cat);
+    if(el) el.textContent = counts[cat] || 0;
+  });
+
+  // STAGGERED REVEAL
+  function reveal(list){
+    list.forEach((card, i) => {
+      card.classList.remove('visible');
+      void card.offsetWidth; // force reflow
+      setTimeout(() => card.classList.add('visible'), i * 55);
+    });
+  }
+  reveal(cards);
+
+  // EMPTY STATES
+  const emptyMap = {html:'es-html', wix:'es-wix', ghl:'es-ghl', design:'es-design'};
+  function toggleEmpty(filter){
+    Object.values(emptyMap).forEach(id => document.getElementById(id).classList.remove('show'));
+    if(emptyMap[filter] && !counts[filter]){
+      document.getElementById(emptyMap[filter]).classList.add('show');
+    }
+  }
+
+  // FILTER
+  const tabs = document.querySelectorAll('.tab');
+  const showingEl = document.getElementById('showing');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const filter = tab.dataset.filter;
+      const visible = [];
+      cards.forEach(card => {
+        if(filter === 'all' || card.dataset.cat === filter){
+          card.classList.remove('hidden');
+          visible.push(card);
+        } else {
+          card.classList.add('hidden');
+          card.classList.remove('visible');
+        }
+      });
+      showingEl.textContent = visible.length;
+      reveal(visible);
+      toggleEmpty(filter);
+    });
+  });
+</script>
+</body>
+</html>
