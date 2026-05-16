@@ -68,8 +68,22 @@
     /* THUMB */
     .proj-thumb{width:100%;height:215px;background:var(--card2);position:relative;overflow:hidden;flex-shrink:0;display:flex;align-items:center;justify-content:center}
     .proj-thumb img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;transition:transform .5s}
+    .proj-thumb img.popup-trigger{cursor:pointer}
     .proj-card.visible:hover .proj-thumb img{transform:scale(1.06)}
     .thumb-icon{font-size:4rem;opacity:.18}
+
+    .image-popup{position:fixed;inset:0;display:none;align-items:center;justify-content:center;padding:2rem;z-index:2000}
+    .image-popup.open{display:flex}
+    .image-popup-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.8);backdrop-filter:blur(2px)}
+    .image-popup-content{position:relative;max-width:900px;width:100%;max-height:90vh;overflow:hidden;border-radius:20px;box-shadow:0 30px 80px rgba(0,0,0,.45);background:rgba(10,12,28,.96);display:flex;flex-direction:column;align-items:center}
+    .popup-image-wrapper{width:100%;overflow:hidden;display:flex;justify-content:center;align-items:center;max-height:78vh}
+    .popup-image-wrapper img{width:auto;max-width:100%;height:auto;max-height:78vh;display:block;object-fit:contain;transition:transform .2s}
+    .popup-controls{display:flex;gap:.5rem;align-items:center;justify-content:center;padding:.75rem 1rem .5rem}
+    .popup-control{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:#fff;padding:.55rem .9rem;border-radius:999px;font-size:.9rem;cursor:pointer;transition:background .2s,transform .2s}
+    .popup-control:hover{background:rgba(255,255,255,.14);transform:translateY(-1px)}
+    .popup-close{position:absolute;top:1rem;right:1rem;width:2.5rem;height:2.5rem;border:none;border-radius:50%;background:rgba(255,255,255,.1);color:#fff;font-size:1.35rem;cursor:pointer;z-index:1;display:flex;align-items:center;justify-content:center;transition:background .2s}
+    .popup-close:hover{background:rgba(255,255,255,.18)}
+    .popup-caption{padding:0 1.5rem 1.3rem;color:rgba(255,255,255,.9);font-size:.95rem;text-align:center;}
 
     /* PLATFORM BADGES */
     .badge{position:absolute;top:.9rem;right:.9rem;border-radius:100px;padding:.25rem .8rem;font-size:.72rem;font-weight:700;backdrop-filter:blur(8px)}
@@ -823,6 +837,55 @@
         </div>
       </div>
     </div>
+    <div class="proj-card" data-cat="html">
+      <div class="proj-thumb" style="background:linear-gradient(135deg,#101828,#111827)">
+        <a href="ad1e904a-5949-4a5a-8ec4-66b3bc0e37f1.png" target="_blank" rel="noopener">
+          <img src="ad1e904a-5949-4a5a-8ec4-66b3bc0e37f1.png" alt="The Migration offer screenshot" onerror="this.style.display='none'" />
+        </a>
+        <span class="badge b-html">HTML/CSS</span>
+      </div>
+      <div class="proj-body">
+        <div class="proj-type">Migration Landing Page · Australia</div>
+        <div class="proj-title">The Migration Offer</div>
+        <div class="proj-desc">Custom HTML/CSS landing page for a migration offer, built with strong messaging, conversion-focused CTAs, and polished section layout.</div>
+        <div class="proj-foot">
+          <div class="ptags"><span class="ptag">HTML/CSS</span><span class="ptag">Landing</span><span class="ptag">Conversion</span></div>
+          <span class="proj-link disabled"><i class="fas fa-external-link-alt"></i> Live</span>
+        </div>
+      </div>
+    </div>
+    <div class="proj-card" data-cat="html">
+      <div class="proj-thumb" style="background:linear-gradient(135deg,#101828,#111827)">
+        <a href="79ef1b4b-6eda-4565-a6a1-e393b7752aad.png" target="_blank" rel="noopener">
+          <img src="79ef1b4b-6eda-4565-a6a1-e393b7752aad.png" alt="The Migration offer screenshot 2" onerror="this.style.display='none'" />
+        </a>
+        <span class="badge b-html">HTML/CSS</span>
+      </div>
+      <div class="proj-body">
+        <div class="proj-type">Migration Landing Page · Australia</div>
+        <div class="proj-title">The Migration Offer — Section 2</div>
+        <div class="proj-desc">Second HTML/CSS screenshot for the same offer, showing a different page section and design variation.</div>
+        <div class="proj-foot">
+          <div class="ptags"><span class="ptag">HTML/CSS</span><span class="ptag">Landing</span><span class="ptag">Screenshot</span></div>
+          <span class="proj-link disabled"><i class="fas fa-external-link-alt"></i> Preview</span>
+        </div>
+      </div>
+    </div>
+    <div class="proj-card" data-cat="ghl">
+      <div class="proj-thumb" style="background:linear-gradient(135deg,#111827,#0f172a)">
+        <span class="thumb-icon">🚀</span>
+        <span class="badge b-ghl">GoHighLevel</span>
+      </div>
+      <div class="proj-body">
+        <div class="proj-type">Migration Offer · Australia</div>
+        <div class="proj-title">The Migration — Offer Page</div>
+        <div class="proj-desc">GoHighLevel offer page designed to convert migration leads with strong CTAs, trust messaging, and a high-converting funnel flow.</div>
+        <div class="proj-foot">
+          <div class="ptags"><span class="ptag">GHL</span><span class="ptag">Landing</span><span class="ptag">Conversion</span></div>
+          <a href="https://offer.themigration.com.au/" target="_blank" class="proj-link"><i class="fas fa-external-link-alt"></i> Live</a>
+        </div>
+      </div>
+    </div>
 
     <!-- ══ EMPTY STATES ══ -->
     <div class="empty-state" id="es-html">
@@ -847,7 +910,24 @@
     </div>
 
   </div><!-- /proj-grid -->
+</div><!-- /proj-grid -->
 </div><!-- /projects-wrap -->
+
+<div class="image-popup" id="imagePopup" aria-hidden="true">
+  <div class="image-popup-backdrop" id="popupBackdrop"></div>
+  <div class="image-popup-content">
+    <button class="popup-close" id="popupClose" aria-label="Close preview">×</button>
+    <div class="popup-image-wrapper">
+      <img src="ad1e904a-5949-4a5a-8ec4-66b3bc0e37f1.png" alt="The Migration offer screenshot" id="popupImage" />
+    </div>
+    <div class="popup-controls">
+      <button class="popup-control" id="zoomOutBtn" type="button">− Zoom Out</button>
+      <button class="popup-control" id="resetZoomBtn" type="button">Reset</button>
+      <button class="popup-control" id="zoomInBtn" type="button">+ Zoom In</button>
+    </div>
+    <div class="popup-caption">The Migration — Offer Page</div>
+  </div>
+</div>
 
 <!-- CTA BANNER -->
 <div class="cta-banner">
@@ -944,6 +1024,75 @@
       reveal(visible);
       toggleEmpty(filter);
     });
+  });
+
+  const popup = document.getElementById('imagePopup');
+  const popupBackdrop = document.getElementById('popupBackdrop');
+  const popupClose = document.getElementById('popupClose');
+  const popupImage = document.getElementById('popupImage');
+  const popupTriggers = document.querySelectorAll('.proj-thumb img.popup-trigger');
+
+  const zoomOutBtn = document.getElementById('zoomOutBtn');
+  const resetZoomBtn = document.getElementById('resetZoomBtn');
+  const zoomInBtn = document.getElementById('zoomInBtn');
+
+  let zoomLevel = 1;
+  const zoomStep = 0.15;
+  const minZoom = 0.5;
+  const maxZoom = 2.5;
+
+  function updateZoom(){
+    popupImage.style.transform = `scale(${zoomLevel})`;
+  }
+
+  function resetZoom(){
+    zoomLevel = 1;
+    updateZoom();
+  }
+
+  function zoomIn(){
+    zoomLevel = Math.min(maxZoom, zoomLevel + zoomStep);
+    updateZoom();
+  }
+
+  function zoomOut(){
+    zoomLevel = Math.max(minZoom, zoomLevel - zoomStep);
+    updateZoom();
+  }
+
+  popupTriggers.forEach(trigger => {
+    trigger.addEventListener('click', () => {
+      popupImage.src = trigger.src;
+      popupImage.alt = trigger.alt;
+      resetZoom();
+      popup.classList.add('open');
+      popup.setAttribute('aria-hidden', 'false');
+    });
+  });
+
+  zoomInBtn.addEventListener('click', zoomIn);
+  zoomOutBtn.addEventListener('click', zoomOut);
+  resetZoomBtn.addEventListener('click', resetZoom);
+
+  popupImage.addEventListener('wheel', event => {
+    if(!popup.classList.contains('open')) return;
+    event.preventDefault();
+    zoomLevel = Math.min(maxZoom, Math.max(minZoom, zoomLevel + (event.deltaY < 0 ? zoomStep : -zoomStep)));
+    updateZoom();
+  });
+
+  function closePopup(){
+    popup.classList.remove('open');
+    popup.setAttribute('aria-hidden', 'true');
+    resetZoom();
+  }
+
+  popupClose.addEventListener('click', closePopup);
+  popupBackdrop.addEventListener('click', closePopup);
+  document.addEventListener('keydown', event => {
+    if(event.key === 'Escape' && popup.classList.contains('open')){
+      closePopup();
+    }
   });
 </script>
 </body>
