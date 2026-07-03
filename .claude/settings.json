@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:revsetlabs.com)",
+      "WebFetch(domain:salmanr12.sg-host.com)",
+      "WebFetch(domain:ahsan-263.github.io)"
+    ]
+  }
+}
